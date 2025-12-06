@@ -136,8 +136,8 @@ app.patch("/updateCard/:id", async (req, res) => {
   }
 });
 
-// DELETE
-app.delete("/deleteCards/:id", async (req, res) => {
+// DELETE (CORREGIDO)
+app.delete("/deleteCard/:id", async (req, res) => {
   try {
     const deleted = await Card.findByIdAndDelete(req.params.id);
 
@@ -181,7 +181,7 @@ app.get("/review", (req, res) => {
     - PUT /updateAllcards/:id → Actualización completa
     - PATCH /updateCard/:id → Actualización parcial
     - PATCH /updateLike/:id → Cambiar like
-    - DELETE /deleteCards/:id → Eliminar tarjeta
+    - DELETE /deleteCard/:id → Eliminar tarjeta
   `);
 });
 
@@ -190,3 +190,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
