@@ -137,7 +137,7 @@ app.patch("/updateCard/:id", async (req, res) => {
 });
 
 // DELETE
-app.delete("/deleteCards/:id", async (req, res) => {
+app.delete("/deleteCard/:id", async (req, res) => {
   try {
     const deleted = await Card.findByIdAndDelete(req.params.id);
 
