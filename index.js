@@ -136,8 +136,8 @@ app.patch("/updateCard/:id", async (req, res) => {
   }
 });
 
-// DELETE (CORREGIDO)
-app.delete("/deleteCard/:id", async (req, res) => {
+// DELETE
+app.delete("/deleteCards/:id", async (req, res) => {
   try {
     const deleted = await Card.findByIdAndDelete(req.params.id);
 
@@ -171,23 +171,26 @@ app.patch("/updateLike/:id", async (req, res) => {
 });
 
 // ROUTE INFO
+// ROUTE INFO
 app.get("/review", (req, res) => {
   res.status(200).send(`
-    Endpoints disponibles:
-    - POST /cards → Crear tarjeta
-    - POST /createCard → Crear tarjeta
-    - GET /getAllCards → Obtener todas las tarjetas
-    - GET /getCard/:id → Obtener tarjeta por ID
-    - PUT /updateAllcards/:id → Actualización completa
-    - PATCH /updateCard/:id → Actualización parcial
-    - PATCH /updateLike/:id → Cambiar like
-    - DELETE /deleteCard/:id → Eliminar tarjeta
+    <h2> Endpoints disponibles</h2>
+    <ul>
+      <li><strong>POST</strong> /cards → Crear tarjeta</li>
+      <li><strong>POST</strong> /createCard → Crear tarjeta</li>
+      <li><strong>GET</strong> /getAllCards → Obtener todas las tarjetas</li>
+      <li><strong>GET</strong> /getCard/:id → Obtener tarjeta por ID</li>
+      <li><strong>PUT</strong> /updateAllcards/:id → Actualización completa</li>
+      <li><strong>PATCH</strong> /updateCard/:id → Actualización parcial</li>
+      <li><strong>PATCH</strong> /updateLike/:id → Cambiar like</li>
+      <li><strong>DELETE</strong> /deleteCard/:id → Eliminar tarjeta</li>
+    </ul>
   `);
 });
+
 
 // SERVER
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-
